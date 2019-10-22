@@ -19,6 +19,8 @@ import {
     SearchInfoList
 } from './style';
 
+type NoPar = () => void
+
 interface IProps {
     focused: boolean,
     list: [],
@@ -29,17 +31,18 @@ interface IProps {
     logout?: any,
     handleInputFocus: any,
     handleInputBlur: any,
-    handleMouseEnter: any,
+    handleMouseEnter: NoPar,
     handleMouseLeave: any,
     switchList: any
   }
-  interface IState {
+interface IState {
     focused: boolean,
     list: [],
     page: number,
     totalPage: number,
     mouseIn: boolean,
-    login: boolean
+    login: boolean,
+    spinIcon: any
   }
   
 
@@ -50,15 +53,15 @@ class Header extends React.Component<IProps, IState> {
                 <SearchInfo onMouseEnter = {handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 >
-                    {/* <SearchInfoTitle>热门搜索
+                    <SearchInfoTitle>热门搜索
                         <SearchInfoSwitch
-                        onClick = {() => switchList(this.spinIcon)}
+                        // onClick = {() => switchList(this.spinIcon)}
                         >
                             <i ref = {(icon) => {
-                                this.spinIcon = icon
+                                // this.spinIcon = icon
                             }} className = 'iconfont spin'>&#xe862;</i>
                             换一换</SearchInfoSwitch>
-                    </SearchInfoTitle> */}
+                    </SearchInfoTitle>
                     <SearchInfoList>
                         {list.map((item,index) => {
                             return (<SearchInfoItem key = {index}>{item}</SearchInfoItem>)
