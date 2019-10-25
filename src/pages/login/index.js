@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {actionCreators} from './store/index';
 
+
 class Login extends PureComponent {
     render() {
         const {login, loginState} = this.props;

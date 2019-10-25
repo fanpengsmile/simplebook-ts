@@ -5,7 +5,7 @@ const defaultState = fromJS({
     login: false
 });
 
-export default (state = defaultState, action) => {
+export default (state = defaultState, action: any) => {
     switch(action.type) {
         case constants.CHANGE_LOGIN:
             return state.set('login', action.login);

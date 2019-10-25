@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {CSSTransition} from 'react-transition-group';
 import {Link} from 'react-router-dom';
 import {actionCreators} from './store/index';
+import * as commonInterface from '../../insterface/commonInterface';
 import {
     HeaderWrapper,
     Logo,
@@ -19,34 +20,7 @@ import {
     SearchInfoList
 } from './style';
 
-type NoPar = () => void
-
-interface IProps {
-    focused: boolean,
-    list: [],
-    page: number,
-    totalPage: number,
-    mouseIn: boolean,
-    login: boolean,
-    logout?: any,
-    handleInputFocus: any,
-    handleInputBlur: any,
-    handleMouseEnter: NoPar,
-    handleMouseLeave: any,
-    switchList: any
-  }
-interface IState {
-    focused: boolean,
-    list: [],
-    page: number,
-    totalPage: number,
-    mouseIn: boolean,
-    login: boolean,
-    spinIcon: any
-  }
-  
-
-class Header extends React.Component<IProps, IState> {
+class Header extends React.Component<commonInterface.IHeaderProps, commonInterface.IHeaderState> {
     getListArea = (show: boolean, list: [], handleMouseEnter: any, mouseIn: boolean, handleMouseLeave: any, switchList: any) => {
         if (show || mouseIn) {
             return (

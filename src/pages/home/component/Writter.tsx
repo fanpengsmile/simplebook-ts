@@ -3,12 +3,19 @@ import {WritterWrapper,
     WritterItem} from '../style';
 import {connect} from 'react-redux';
 
-class Writter extends PureComponent {
+interface IProps {
+    list: [],
+  }
+interface IState {
+    list: any
+  }
+
+class Writter extends PureComponent<IProps, IState> {
     render() {
         const {list} = this.props;
         return (
             <WritterWrapper>
-                {list.map((item) => {
+                {list.map((item: any) => {
                     return (
                 <WritterItem key = {item.get('id')}>
                     <img className = 'img' alt = 'no support!!!' src = {item.get('imgUrl')}></img>
@@ -21,7 +28,7 @@ class Writter extends PureComponent {
     }
 }
 
-const mapState = (state) => ({
+const mapState = (state: any) => ({
     list: state.getIn(['home', 'writterList'])
 })
 

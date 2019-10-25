@@ -8,7 +8,7 @@ import List from './component/List';
 import Recommend from './component/Recommend';
 import Writter from './component/Writter';
 import {connect} from 'react-redux';
-import {actionCreators} from '../home/store/index';
+import {actionCreators} from './store/index';
 
 class Home extends PureComponent {
 

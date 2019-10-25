@@ -1,14 +1,14 @@
 import axios from 'axios';
 import * as contants from './constants';
 
-export const changeLogin = (login) => ({
+export const changeLogin = (login: any) => ({
     type: contants.CHANGE_LOGIN,
     login: login
 });
 
-export const login = (account, password) => {
-    return (dispatch) => {
-        axios.get('/api/login.json?account=' + account + '&password=' + password).then(res => {
+export const login = (account: string, password: string) => {
+    return (dispatch: any) => {
+        axios.get('/api/login.json?account=' + account + '&passwordqqq=' + password).then(res => {
             const result = res.data.data;
             if (result) {
                 dispatch(changeLogin(true));

@@ -3,13 +3,21 @@ import {connect} from 'react-redux';
 import {TopicWrapper,
     TopicItem} from '../style';
 
-class Topic extends PureComponent {
+    interface IProps {
+        list: any,
+      }
+    interface IState {
+        list: any,
+        page: number
+      }
+
+class Topic extends PureComponent<IProps, IState> {
     
     render() {
         const {list} = this.props;
         return (
             <TopicWrapper>
-                {list.map((item)=> {
+                {list.map((item: any)=> {
                     return (
                         <TopicItem key = {item.get('id')}>
                             <img  className = 'topic-img' alt = 'no support' src = {item.get('imgUrl')}></img>
@@ -22,7 +30,7 @@ class Topic extends PureComponent {
     }
 }
 
-const mapState = (state) => ({
+const mapState = (state: any) => ({
     list: state.getIn(['home', 'topicList'])
 })
 
