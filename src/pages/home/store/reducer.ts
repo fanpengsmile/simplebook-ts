@@ -10,7 +10,18 @@ const defaultState = fromJS({
     showScroll: false
 });
 
-export default (state = defaultState, action) => {
+interface Iresult {
+    topicList: [],
+    articleList: [],
+    recommendList: [],
+    writterList: [],
+    type: string,
+    nextPage: number,
+    show: number,
+    list: []
+}
+
+export default (state = defaultState, action: Iresult) => {
     switch(action.type) {
         case constants.CHANGE_HOME_DATA:
             return state.merge({

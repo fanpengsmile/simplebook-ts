@@ -3,13 +3,11 @@ import {RecommendWrapper,
     RecommendItem} from '../style';
 import {connect} from 'react-redux';
 
-type onePar = (id: number) => void
-
 interface IProps {
-    list: any
+    list?: any
   }
 interface IState {
-    list: any
+    list?: any
   }
 
 

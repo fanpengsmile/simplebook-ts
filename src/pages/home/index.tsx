@@ -10,7 +10,17 @@ import Writter from './component/Writter';
 import {connect} from 'react-redux';
 import {actionCreators} from './store/index';
 
-class Home extends PureComponent {
+interface IProps {
+    showScroll: boolean,
+    changeHomeData: Function,
+    changeScrollTopShow: Function
+  }
+interface IState {
+    title: string,
+    content: string
+  }
+
+class Home extends PureComponent<IProps, IState> {
 
     handleScrollTop() {
         window.scrollTo(0, 0);
@@ -42,29 +52,29 @@ class Home extends PureComponent {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.props.changeScrollTopShow);
+        window.removeEventListener('scroll', this.props.changeScrollTopShow.bind(this));
     }
 
     bindEvent() {
-        window.addEventListener('scroll', this.props.changeScrollTopShow);
+        window.addEventListener('scroll', this.props.changeScrollTopShow.bind(this));
     }
 }
 
-const mapDispatch = (dispatch) => ({
+const mapDispatch = (dispatch: Function) => ({
     changeHomeData() {
         dispatch(actionCreators.getHomeInfo());
     },
-    changeScrollTopShow(e) {
+    changeScrollTopShow() {
         let top = document.documentElement.scrollTop;
         if (top > 320) {
             dispatch(actionCreators.changeScrollShow(true));
-        } else {
+        } else { 
             dispatch(actionCreators.changeScrollShow(false));
         }
     }
 });
 
-const mapState = (state) => ({
+const mapState = (state: any) => ({
     showScroll: state.getIn(['home', 'showScroll'])
 })
 

@@ -19,8 +19,13 @@ import {
     SearchInfoItem,
     SearchInfoList
 } from './style';
+import {changeLogin} from '../../pages/login/store/actionCreators';
 
 class Header extends React.Component<commonInterface.IHeaderProps, commonInterface.IHeaderState> {
+    
+    //解决dom使用ref无法指定this问题，将ref绑定到Header上。
+    public spinIcon:any;
+    
     getListArea = (show: boolean, list: [], handleMouseEnter: any, mouseIn: boolean, handleMouseLeave: any, switchList: any) => {
         if (show || mouseIn) {
             return (
@@ -29,10 +34,10 @@ class Header extends React.Component<commonInterface.IHeaderProps, commonInterfa
                 >
                     <SearchInfoTitle>热门搜索
                         <SearchInfoSwitch
-                        // onClick = {() => switchList(this.spinIcon)}
+                        onClick = {() => switchList(this.spinIcon)}
                         >
                             <i ref = {(icon) => {
-                                // this.spinIcon = icon
+                                this.spinIcon = icon
                             }} className = 'iconfont spin'>&#xe862;</i>
                             换一换</SearchInfoSwitch>
                     </SearchInfoTitle>
@@ -102,7 +107,6 @@ class Header extends React.Component<commonInterface.IHeaderProps, commonInterfa
 
 const mapState = (state: any) => {
     return {
-        // focused: state.get('header').get('focused')
         focused: state.getIn(['header', 'focused']),
         list: state.getIn(['header', 'list']),
         page: state.getIn(['header', 'page']),
@@ -114,9 +118,9 @@ const mapState = (state: any) => {
 
 const mapDispatch = (dispatch: any) => {
     return {
-        // logout() {
-        //     dispatch(loginActionCreators.changeLogin(false))
-        // },
+        logout() {
+            dispatch(changeLogin(false))
+        },
         handleInputFocus(list: any) {
             if (list.size === 0) {
                 dispatch(actionCreators.getList());

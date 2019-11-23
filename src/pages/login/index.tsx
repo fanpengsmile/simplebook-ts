@@ -4,8 +4,20 @@ import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {actionCreators} from './store/index';
 
+interface IProps {
+    login: Function,
+    loginState: boolean
+  }
+interface IState {
+    title: string,
+    content: string
+  }
 
-class Login extends PureComponent {
+class Login extends PureComponent<IProps, IState> {
+
+    private account: any;
+    private password: any; 
+
     render() {
         const {login, loginState} = this.props;
         if (loginState) {
@@ -26,12 +38,12 @@ class Login extends PureComponent {
     }
 }
 
-const mapState = (state) => ({
+const mapState = (state: any) => ({
     loginState: state.getIn(['login', 'login'])
 })
 
-const mapDispatch = (dispatch) => ({
-    login(account, password) {
+const mapDispatch = (dispatch: Function) => ({
+    login(account: string, password: string) {
         dispatch(actionCreators.login(account, password));
     }
 })

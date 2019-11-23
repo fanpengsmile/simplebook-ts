@@ -4,10 +4,10 @@ import {TopicWrapper,
     TopicItem} from '../style';
 
     interface IProps {
-        list: any,
+        list?: any,
       }
     interface IState {
-        list: any,
+        list?: any,
         page: number
       }
 

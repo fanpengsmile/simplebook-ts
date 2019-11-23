@@ -2,7 +2,13 @@ import React, {PureComponent} from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-class Write extends PureComponent {
+interface IProps {
+    loginState: boolean
+  }
+interface IState {
+  }
+
+class Write extends PureComponent<IProps, IState> {
     render() {
         const {loginState} = this.props;
         if (loginState) {
@@ -13,7 +19,7 @@ class Write extends PureComponent {
     }
 }
 
-const mapState = (state) => ({
+const mapState = (state: any) => ({
     loginState: state.getIn(['login', 'login'])
 })
 
