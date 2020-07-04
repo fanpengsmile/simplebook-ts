@@ -1,26 +1,22 @@
-import React, {PureComponent} from 'react';
-import {Redirect} from 'react-router-dom';
-import {connect} from 'react-redux';
+import React from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 interface IProps {
-    loginState: boolean
-  }
-interface IState {
-  }
-
-class Write extends PureComponent<IProps, IState> {
-    render() {
-        const {loginState} = this.props;
-        if (loginState) {
-            return <div>写文章</div>
-        } else {
-            return <Redirect to = '/login'/>
-        }
-    }
+  loginState: boolean;
 }
 
+const Write = (props: IProps) => {
+  const { loginState } = props;
+  if (loginState) {
+    return <div>写文章</div>;
+  } else {
+    return <Redirect to="/login" />;
+  }
+};
+
 const mapState = (state: any) => ({
-    loginState: state.getIn(['login', 'login'])
-})
+  loginState: state.getIn(["login", "login"]),
+});
 
 export default connect(mapState, null)(Write);

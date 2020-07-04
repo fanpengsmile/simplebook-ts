@@ -2,7 +2,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import Header from './common/header/index';
 import store from './store/index';
 import './static/iconfont/iconfont.css';
